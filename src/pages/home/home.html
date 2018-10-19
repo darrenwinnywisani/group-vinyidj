@@ -10,18 +10,14 @@
       </ion-buttons>
       
       <ion-buttons start>
-          <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+          <button ion-button icon-only>
             <ion-icon name="person"></ion-icon>
           </button>
         </ion-buttons>
       </ion-toolbar>
   </ion-header>
-  <ion-content padding class="background">
 
-    
-      <ion-fab bottom right color="secondary">
-          <button ion-fab (click)=" addDJ()"><ion-icon name="add"></ion-icon></button>
-        </ion-fab>
+  <ion-content padding>
       <div align="center" class="search" *ngIf="isSearchbarOpened;">
         <div *ngIf="searchstring===''">
           <p>No search results found</p>
@@ -40,11 +36,51 @@
             </ion-item>
           </ion-list>
       </div>  
-      <div *ngIf="!isSearchbarOpened;">
-          <ion-list>
-              <button ion-item inset *ngFor="let genres of genre; let i=index" (click)="sortedByGenre()">
-                  {{genres.music}}
-              </button>  
-          </ion-list>
-      </div> 
+      <ion-list>
+        <ion-card (click)="sortedByGenre(0)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Electronic music</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(1)">
+          <ion-card-header><ion-icon name="book"></ion-icon> House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(2)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Hip Pop</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(3)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Gqom</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(4)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Kwaito</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(5)">
+          <ion-card-header><ion-icon name="book"></ion-icon> RnB</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(6)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Deep House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(7)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Commercial House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(8)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Jazz</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(9)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Soul</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(10)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Accapella</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(11)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Rock</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(12)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Disco</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(13)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Reggae</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(14)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Gospel</ion-card-header>
+        </ion-card>
+      </ion-list>
   </ion-content>

@@ -1,70 +1,65 @@
 page-view-details {
 
-
-        .bg_content {
-        background-image: url("../assets/imgs/bg10.jpg");
-        //background-color: darkolivegreen;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-    }
-    .scroll-content {
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-    .validation{
-        background: transparent;
-    }
-    .item{
-        margin-bottom: 5px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.5);
-        border: medium none;
-     
-        .text-input, {
-            color: #fff;
+  
+        h2{
+            color: #66bfbf;  
         }
-     
+        .content{
         
-        input::-moz-placeholder{
-            color: #fff!important;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-color:#EEEEEE;
         }
-        input:-moz-placeholder {
-            color: #fff!important;
+        .scroll-content {
+            overflow: hidden !important;
         }
-        *:-moz-placeholder{
-            color: #fff!important;
+        .container{
+            display: flex;
+            justify-content:center;
+            align-content:left;
+            align-items:center;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            flex-direction: column;
+            right: 0;
+            position: absolute;
+            .name-holder {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 20px;
+      
+      
         }
-        *:-ms-input-placeholder{
-            color: #fff!important;
+        .form-holder {
+                width: 100%;
+                padding: 20px;
+            }
+        .items {
+            background-color: transparent;
+            color:whitesmoke;
+            .input {
+         
+                color:#4d606e;
+               
+            }
+            .label{
+                color:#66bfbf;
+            }
+         
+          }
+        #button {
+            color: #66bfbf;
+            color: white;
+            border-radius:50px;
         }
-        *::-webkit-input-placeholder{
-            color: #fff!important;
+        #button1 {
+            border-radius:50px;
         }
-     
     }
-     
-    .icon {
-        padding-right: 10px;
-    }
-     
-    .bottom {
-        bottom: 0;
-    }
-     
-    .input-cover {
-    position: static;
-    }
-    .card{
-        background-color: color($colors,primary);
-        color: lightblue;
-    }
-    .form{
-        box-shadow: none;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-    }
+    
 }

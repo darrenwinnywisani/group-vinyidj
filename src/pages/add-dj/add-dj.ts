@@ -15,14 +15,12 @@ import { ImageProvider } from '../../providers/image/image';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-add-dj',
   templateUrl: 'add-dj.html',
 })
 export class AddDjPage {
-
   stageName:string='';
   email:string='';
   contact:string='';
@@ -38,7 +36,10 @@ export class AddDjPage {
   cat:string;
   currentUser:User;
   genre:string = '';
-
+  priceHour:string;
+  facebookLink:string;
+  twitterLink:string;
+  instaLink:string;
   town=['Alice','Bellville','Benoni','Bethlehem','Bloemfontein','Boksburg','Brakpan' ,'Butterworth','Cape Town',
   'Carletonville','Constantia','Durban','East London','Emalahleni','Empangeni','Germiston','George','Giyani',
   'Graaff-Reinet','Grahamstown','Hopefield','Jagersfontein','Johannesburg','King William’s Town','Kimberley',
@@ -49,8 +50,7 @@ export class AddDjPage {
   'Springs','Stellenbosch','Swellendam','Thabazimbi','Uitenhage','Ulundi','Umlazi','Vanderbijlpark','Vereeniging',
   'Virginia','Welkom','Worcester','Zwelitsha', ];
 
-  category =['House','Deep House','Hip Pop','Afro Pop','Soul','Rnb'];
-
+  category =['Electronic music','House','Hip Pop','Gqom','Kwaito','Rnb','Deep House','Commercial House','jazz','Soul','Accapella','Rock','Disco','Reggae','Gospel'];
   constructor(public navCtrl: NavController, private loadingCtrl:LoadingController,
     private alertCtrl:AlertController,private djPROV:AddDjProvider, private imagePicker: ImagePicker,
     private base64: Base64, public imageProvider: ImageProvider,
@@ -64,15 +64,14 @@ export class AddDjPage {
       })
       
   }
-
   
-  updateDjD(email,stageName,desc,contact,Location,genre){
-      this.djPROV.updateNames(this.email,this.stageName,this.desc,this.contact,this.Location,this.genre)
+  updateDjD(email,stageName,desc,contact,Location,genre,priceHour,facebookLink){
+      this.djPROV.updateNames(this.email,this.stageName,this.desc,this.Location,this.genre,this.priceHour,this.facebookLink)
      
   }
-
   SaveUserData(){
-  if(this.email === '' || this.stageName==='' || this.desc ==='' || this.contact ==='' || this.Location ===''|| this.genre===''  ){
+  if(this.email === '' || this.stageName==='' || this.desc ==='' || this.Location ===''|| this.genre===''
+  || this.priceHour===''|| this.facebookLink===''){
     const alertName:Alert =this.alertCtrl.create({
     subTitle:'Please provide all your details',
     buttons:[{text:'ok'}]
@@ -80,8 +79,7 @@ export class AddDjPage {
          alertName.present();
     }
   else{  
-
-    this.djPROV.updateNames(this.email,this.stageName,this.desc,this.contact,this.Location,this.genre);
+    this.djPROV.updateNames(this.email,this.stageName,this.desc,this.Location,this.genre,this.priceHour,this.facebookLink);
  
     const alertName:Alert =this.alertCtrl.create({
       subTitle:'You have successfully added your DJ page',
@@ -89,10 +87,9 @@ export class AddDjPage {
           })
      alertName.present();
      this.navCtrl.setRoot(HomePage);
-  }
+        }
  
 }
-
 takePhoto() {
   this.camera.getPicture({
     quality: 95,
@@ -105,8 +102,6 @@ takePhoto() {
     correctOrientation: true,
     sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
   }).then((profilePicture) => {
-
-
     firebase.storage().ref(`/profilePictures/${this.currentUser.uid}`).putString(profilePicture, 'base64', { contentType: 'image/png' })
     .then((savedProfilePicture) => {
     
@@ -118,7 +113,6 @@ takePhoto() {
      
   
       })
-
   //   this.picture = profilePicture;
   // firebase.storage().ref('profilePictures/picture.png').putString(profilePicture, 'base64', { contentType: 'image/png' })
   // .then((savedProfilePicture) => {
@@ -130,13 +124,11 @@ takePhoto() {
     
   //   })
    
-
   //   })
    
   }, err => {
     console.log('érror' + JSON.stringify(err))
   })
-
  }
  getPhoto() {
   let options = {
@@ -148,29 +140,19 @@ takePhoto() {
       buttons: [{ text: 'ok', role: 'cancel' }]
     })
     newAlert.present()
-
     const pic = firebase.storage().ref('profilePictures/picture.png')
     pic.putString(results[0], 'base64', { contentType: 'image/png' })
     for (var i = 0; i < results.length; i++) {
       this.imgPreview = results[i];
       this.saveImage(this.imgPreview);
-
       // this.base64.encodeFile(results[i]).then((base64File: string) => {
-
       //   this.regData.avatar = base64File;
-
-
       // }, (err) => {
       //   console.log(err);
       // });
     }
   }, (err) => { });
-
-
-
-
   // const optionss: CameraOptions = {
-
   // }
   // this.camera.getPicture(optionss).then((imageData)=>{
   //   this.imgPreview = imageData
@@ -178,19 +160,14 @@ takePhoto() {
   // },(err)=>{
   //   console.log(err)
   // })
-
   }
   saveImage(results) {
     this.imageProvider.saveImage(results)
   }
-
   showLoader() {
     this.loading = this.loadingCtrl.create({
       content: 'Submitting...'
     });
-
     this.loading.present()
-
   }
-
 }

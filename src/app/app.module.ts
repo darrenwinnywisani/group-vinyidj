@@ -25,6 +25,8 @@ import { ImageProvider } from '../providers/image/image';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import {Camera} from '@ionic-native/camera';
+import { ViewDjPage } from '../pages/view-dj/view-dj';
+import { SplashPage } from '../pages/splash/splash';
 
 
 const config = {
@@ -46,10 +48,12 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ProfilePage,
+    ViewDjPage,
     ResetpasswordPage,
     AddDjPage,
     ViewDetailsPage,
-    BookingPage
+    BookingPage,
+    SplashPage
  
   ],
   imports: [
@@ -63,12 +67,13 @@ firebase.initializeApp(config);
     HomePage,
     SigninPage,
     SignupPage,
+    ViewDjPage,
     ProfilePage,
     ResetpasswordPage,
     AddDjPage,
     ViewDetailsPage,
     BookingPage,
-
+    SplashPage
 
      
   ],

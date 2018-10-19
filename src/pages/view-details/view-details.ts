@@ -3,6 +3,7 @@ import { HomePage } from './../home/home';
 import { AddDjProvider } from './../../providers/add-dj/add-dj';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewDjPage } from '../view-dj/view-dj';
 
 /**
  * Generated class for the ViewDetailsPage page.
@@ -23,7 +24,7 @@ export class ViewDetailsPage {
   filteredusers=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private DjPROV:AddDjProvider) {
-
+    
     this.filteredusers=this.navParams.get('data');
 
     // this.DjPROV.getallusers().then((res: any) => {
@@ -33,7 +34,9 @@ export class ViewDetailsPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.filteredusers=[];
+    this.filteredusers=this.navParams.get('data');
     console.log('ionViewDidLoad ViewDetailsPage');
   }
 

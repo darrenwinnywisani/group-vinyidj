@@ -6,18 +6,23 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>view-dj</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>
+       <h1 text-center>{{categoty}}</h1>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="content">
+  <ion-fab bottom right color="secondary">
+      <button ion-fab (click)="addDJ()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
   <div class="slide">
     <ion-slides>
-      <ion-slide *ngFor="let dj of filteredusers; let i=index">
-        <ion-card>
+      <ion-slide *ngFor="let dj of DJGenre; let i=index">
+        <ion-card (click)="gotoDetails(i)">
           <img class="imgs" src="{{dj.profile}}" />
           <h2>{{dj.stageName}}</h2>
         </ion-card>

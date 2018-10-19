@@ -1,39 +1,10 @@
 page-home {
-    .background{
-        // background-color:#020438;
+.list{
+    .card{
+        padding: 30px;
     }
-    .slide{
-        padding:2px;
-    }
-    .search{
-        background-color: white;
-    }
-    .imgs{
-        height:200%;
-        width: 100%;
-    }
-    .item{
-        background-color: white;
-        background-size: 100% 100%;
-        padding:10px;
-        border-radius: 10px;
-        .h1{
-            align-content: center;
-            align-items: center;
-            color:black;
-        }
-
-       
-    }
-    .img{
-         border-radius:50%;
-         height: 50%;
-         width: 50%; 
-    }
-    .pnum{
-        position: relative;
-        padding:5px;
-        background-color:t#488aff;
-        color:white;
-    }
+}
+.scoll-content{
+    overflow:v;
+}
 }

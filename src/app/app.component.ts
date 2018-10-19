@@ -10,6 +10,9 @@ import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
 import * as firebase from 'firebase';
 import { ProfilePage } from '../pages/profile/profile';
+import { SplashPage } from '../pages/splash/splash';
+import { ViewDetailsPage } from '../pages/view-details/view-details';
+import { BookingPage } from '../pages/booking/booking';
 
 
 
