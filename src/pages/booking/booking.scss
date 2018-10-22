@@ -1,7 +1,10 @@
 page-booking {
     h2{
         color: #66bfbf;  
+<<<<<<< HEAD
        
+=======
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     }
     .content{
         // background-image: url("../assets/imgs/back.jpg");
@@ -9,6 +12,12 @@ page-booking {
         background-repeat: no-repeat;
         background-color:#EEEEEE;
     }
+<<<<<<< HEAD
+=======
+    .scroll-content {
+        overflow: hidden !important;
+    }
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     .container{
         display: flex;
         justify-content:center;
@@ -64,6 +73,7 @@ page-booking {
     //     color: #66bfbf;
     //     font-weight: bolder
     // }
+<<<<<<< HEAD
     }
     .form-holder {
         width: 100%;
@@ -73,6 +83,16 @@ page-booking {
         background-color:transperant;
         color:#4d606e;
     
+=======
+    }
+    .form-holder {
+            width: 100%;
+            padding: 20px;
+        }
+    .items {
+        background-color: transparent;
+        color:#4d606e;
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
         .input {
      
             color:#4d606e;
@@ -93,5 +113,9 @@ page-booking {
     border-radius:50px;
     }
 }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4

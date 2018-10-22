@@ -37,7 +37,11 @@ export class AddDjPage {
   cat:string;
   currentUser:User;
   genre:string = '';
+<<<<<<< HEAD
   priceHour:number;
+=======
+  priceHour:string;
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   facebookLink:string;
   twitterLink:string;
   instaLink:string;
@@ -51,7 +55,11 @@ export class AddDjPage {
   'Springs','Stellenbosch','Swellendam','Thabazimbi','Uitenhage','Ulundi','Umlazi','Vanderbijlpark','Vereeniging',
   'Virginia','Welkom','Worcester','Zwelitsha', ];
 
+<<<<<<< HEAD
   category =['Electronic music','House','Hip Pop','Gqom','Kwaito','Rnb','Deep House','Commercial House','Jazz','Soul','Accapella','Rock','Disco','Reggae','Gospel'];
+=======
+  category =['Electronic music','House','Hip Pop','Gqom','Kwaito','Rnb','Deep House','Commercial House','jazz','Soul','Accapella','Rock','Disco','Reggae','Gospel'];
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   constructor(public navCtrl: NavController, private loadingCtrl:LoadingController,
     private alertCtrl:AlertController,private djPROV:AddDjProvider, private imagePicker: ImagePicker,
     private base64: Base64, public imageProvider: ImageProvider,
@@ -72,7 +80,11 @@ export class AddDjPage {
   }
   SaveUserData(){
   if(this.email === '' || this.stageName==='' || this.desc ==='' || this.Location ===''|| this.genre===''
+<<<<<<< HEAD
   || this.priceHour===0 || this.facebookLink===''){
+=======
+  || this.priceHour===''|| this.facebookLink===''){
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     const alertName:Alert =this.alertCtrl.create({
     subTitle:'Please provide all your details',
     buttons:[{text:'ok'}]
@@ -87,7 +99,11 @@ export class AddDjPage {
       buttons:[{text:'ok'}]
           })
      alertName.present();
+<<<<<<< HEAD
      this.navCtrl.setRoot(ProfilePage);
+=======
+     this.navCtrl.setRoot(HomePage);
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
         }
  
 }
@@ -171,7 +187,10 @@ takePhoto() {
     });
     this.loading.present()
   }
+<<<<<<< HEAD
   profile(){
     this.navCtrl.setRoot(ProfilePage)
   }
+=======
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
 }

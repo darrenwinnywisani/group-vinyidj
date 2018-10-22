@@ -133,6 +133,7 @@ export class BookingPage {
   })
  }
  sendMessage() : void
+<<<<<<< HEAD
  {  
     this.hours=this.Number.toString();
     this.priceHour=this.price.toString();
@@ -140,6 +141,10 @@ export class BookingPage {
     this.Number=this.total;
      this.message='Hello '+this.sname+"\n"+" "+"\n"+"You have received a booking invite."+"\n"+" "+"\n"+"Event: "+this.userForm.controls['event'].value+" "+"Location:"+this.userForm.controls['Location'].value+"\n"+" "+"\n Date: "+
      this.userForm.controls['Date'].value+"\n"+"Time: "+this.userForm.controls['Time'].value;
+=======
+ {
+     this.message='Hello '+this.sname+"\n The event will take place:"+this.userForm.controls['Location'].value+"\n on this day:"+this.userForm.controls['Date'].value+"Time: "+this.userForm.controls['Time'].value;
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
          this._EMAIL.sendEmail(this.sentEmail, this.userForm.controls['event'].value, this.message);
       
   }

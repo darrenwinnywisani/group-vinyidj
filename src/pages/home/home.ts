@@ -25,17 +25,25 @@ export class HomePage {
   category=[];
   arrGenre=[];
   genres:string='';
+<<<<<<< HEAD
   userProfile:any;
   avatar:string;
+=======
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   tempGenre:string='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private DjPROV: AddDjProvider,public zone: NgZone, public alertCtrl: AlertController, private catProv: CatalogProvider) {
       this.DjPROV.getallusers().then((res: any) => {
         this.filteredusers = res;
+<<<<<<< HEAD
         this.temparr = res;
       })
       this.userProfile=this.DjPROV.getuserdetails();
       console.log('user',this.userProfile)
+=======
+      })
+
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   }
   profile(){
     this.navCtrl.push(UserprofilePage)

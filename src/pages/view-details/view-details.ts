@@ -23,8 +23,13 @@ export class ViewDetailsPage {
 
   temparr=[];
   filteredusers=[];
+<<<<<<< HEAD
   facebook:string='https://www.facebook.com/';
   constructor(public navCtrl: NavController, private facebookProv:FacebookProvider,public navParams: NavParams, private DjPROV:AddDjProvider) {
+=======
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private DjPROV:AddDjProvider) {
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     
     this.filteredusers=this.navParams.get('data');
     // this.facebook=this.filteredusers[0].facebookLink;

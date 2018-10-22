@@ -58,7 +58,11 @@ signIn(){
   console.log(this.userForm.valid)
   }else{
     let loading = this.loadingCtrl.create({
+<<<<<<< HEAD
       content: 'Logging in...'
+=======
+      content: 'Logging...'
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     });
   
     loading.present();

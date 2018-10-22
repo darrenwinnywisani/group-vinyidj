@@ -1,4 +1,5 @@
 page-home {
+<<<<<<< HEAD
      .content{
         background-color:color($colors,light);
         .img{
@@ -208,4 +209,14 @@ page-home {
             overflow:scroll;
         }
      }
+=======
+.list{
+    .card{
+        padding: 30px;
+    }
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
+}
+.scoll-content{
+    overflow:v;
+}
 }

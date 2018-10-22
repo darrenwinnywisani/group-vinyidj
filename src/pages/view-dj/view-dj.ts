@@ -15,7 +15,11 @@ export class ViewDjPage {
   DJGenre=[];
   filteredusers=[];
   dj=[];
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, private DjPROV: AddDjProvider,public navParams: NavParams) {
+=======
+  constructor(public navCtrl: NavController,  private DjPROV: AddDjProvider,public navParams: NavParams) {
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     this.categoty=this.navParams.get('data');
     this.DjPROV.getallusers().then((res: any) => {
       this.filteredusers = res;
@@ -35,6 +39,7 @@ export class ViewDjPage {
   }
   gotoDetails(i:number){
     this.dj.push(this.DJGenre[i]);
+<<<<<<< HEAD
     this.navCtrl.push(ViewDetailsPage,{data:this.dj});
     this.dj=[];
   }
@@ -44,3 +49,9 @@ export class ViewDjPage {
   }
 
 }
+=======
+    this.navCtrl.push(ViewDetailsPage,{data:this.dj})
+  }
+
+}
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4

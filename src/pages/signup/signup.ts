@@ -121,6 +121,9 @@ export class SignupPage {
   gotosignin(){
     this.navCtrl.push(SigninPage);
   }
+  gotosignin(){
+    this.navCtrl.push(SigninPage);
+  }
 
   equalto(field_name): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {

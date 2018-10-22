@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
+<<<<<<< HEAD
   <ion-buttons start *ngIf="!isSearchbarOpened">
       <button ion-button icon-only  (click)="profile()">
         <ion-icon name="person"></ion-icon>
@@ -16,8 +17,29 @@
   </ion-header>
 
   <ion-content padding class="content">
+=======
+      <ion-title *ngIf="!isSearchbarOpened">Home</ion-title>
+      <!-- <ion-searchbar [(ngModel)]="searchDj" (ionInput)="setFilteredDj()" *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar> -->
+      <ion-searchbar [(ngModel)]="searchstring" (input)="searchDJ($event)" *ngIf="isSearchbarOpened" palceholder="Search" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+      <ion-buttons end>
+        <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+      
+      <ion-buttons start>
+          <button ion-button icon-only>
+            <ion-icon name="person"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
       <div align="center" class="search" *ngIf="isSearchbarOpened;">
         <ion-list *ngFor="let dj of filteredusers; let i=index">
+<<<<<<< HEAD
           <ion-item (click)="viewDJ(i)">
             <div *ngIf="searchstring!==''|| searchstring==''">
             <ion-row>
@@ -98,4 +120,66 @@
             </ion-card>
           </ion-list>
       </div>   
+=======
+            <ion-item (click)="gotoViewDetails(i)">
+              <div *ngIf="searchstring!==''">
+                <ion-row>
+                    <ion-col >
+                      <h2>{{dj.stageName}}</h2>
+                      <p>{{dj.Location}}</p>
+                      <p>{{dj.genre}}</p>
+                    </ion-col>
+                </ion-row>
+              </div>
+            </ion-item>
+          </ion-list>
+      </div>  
+      <ion-list>
+        <ion-card (click)="sortedByGenre(0)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Electronic music</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(1)">
+          <ion-card-header><ion-icon name="book"></ion-icon> House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(2)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Hip Pop</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(3)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Gqom</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(4)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Kwaito</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(5)">
+          <ion-card-header><ion-icon name="book"></ion-icon> RnB</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(6)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Deep House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(7)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Commercial House</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(8)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Jazz</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(9)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Soul</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(10)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Accapella</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(11)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Rock</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(12)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Disco</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(13)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Reggae</ion-card-header>
+        </ion-card>
+        <ion-card (click)="sortedByGenre(14)">
+          <ion-card-header><ion-icon name="book"></ion-icon> Gospel</ion-card-header>
+        </ion-card>
+      </ion-list>
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   </ion-content>

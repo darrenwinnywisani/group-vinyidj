@@ -1,4 +1,5 @@
 <ion-header>
+<<<<<<< HEAD
   <ion-navbar color="primary">
     <ion-title>Add DJ</ion-title>
   </ion-navbar>
@@ -15,16 +16,41 @@
 
     <ion-item class="items" >
       <ion-label  floating >Stage Name</ion-label>
+=======
+  <ion-navbar color="primary" text-center>
+    <ion-title>Add DJ</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="content" >
+  <div class="img" align="center">
+      <img class="icon" src="{{imgPreview}}"  (click)="takePhoto()">
+  </div>
+    <ion-item class="items">
+      <ion-label  floating >Email : </ion-label>
+      <ion-input class="input" [(ngModel)]="email" type="text" ></ion-input>
+    </ion-item>
+    <ion-item class="items" >
+      <ion-label  floating >Stage Name: </ion-label>
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
       <ion-input class="input" [(ngModel)]="stageName" type="text" ></ion-input>
     </ion-item>
 
     <ion-item class="items" >
+<<<<<<< HEAD
         <ion-label  floating >Description</ion-label>
         <ion-input class="input" [(ngModel)]="desc" type="text" text-wrap></ion-input>
     </ion-item>
 
     <ion-item class="items">
       <ion-label>Genre</ion-label>
+=======
+        <ion-label  floating >Description : </ion-label>
+        <ion-input class="input" [(ngModel)]="desc" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item class="items">
+      <ion-label>Genre :</ion-label>
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
       <ion-select  [(ngModel)]="genre" >
       <ion-option  *ngFor ="let cat of category; let i=index ">{{category[i]}}</ion-option>
       </ion-select>
@@ -32,6 +58,7 @@
 
     <ion-item class="items">
       <ion-label>Location</ion-label>
+<<<<<<< HEAD
       <ion-select   [(ngModel)]="Location" >
       <ion-option  *ngFor ="let townships of town; let i=index ">{{town[i]}}</ion-option>
       </ion-select>
@@ -50,4 +77,24 @@
     <button ion-button block round  id="button" (click)="SaveUserData()">Add</button>
     
 </div>
+=======
+      <ion-select  [(ngModel)]="Location" >
+      <ion-option *ngFor ="let townships of town; let i=index ">{{town[i]}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="items" >
+      <ion-label  floating >Enter price per hour : </ion-label>
+      <ion-input class="input" [(ngModel)]="priceHour" type="text" ></ion-input>
+    </ion-item>
+    <ion-item class="items">
+        <ion-label  floating >Facebook Link : </ion-label>
+        <ion-input class="input" [(ngModel)]="facebookLink" type="text" ></ion-input>
+    </ion-item>
+      
+  <br>
+  <button ion-button block round  id="button1" (click)="SaveUserData()">Add Details</button>
+  
+  
+>>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
 </ion-content>
+
