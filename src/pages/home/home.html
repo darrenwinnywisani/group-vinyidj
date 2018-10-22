@@ -1,51 +1,101 @@
 <ion-header>
-    <ion-navbar color="twitter">
-        <button ion-button menuToggle *ngIf="!isSearchbarOpened">
-            <ion-icon name="menu"></ion-icon>
-        </button>
-      <ion-title align="center" *ngIf="!isSearchbarOpened"></ion-title>
-      <!-- <ion-searchbar [(ngModel)]="searchDj" (ionInput)="setFilteredDj()" *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar> -->
-      <ion-searchbar [(ngModel)]="searchstring" (input)="searchDJ($event)" *ngIf="isSearchbarOpened" palceholder="Search" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
-      <ion-buttons end>
-        <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
-          <ion-icon name="search"></ion-icon>
-        </button>
-      </ion-buttons>
-      </ion-navbar>
+  <ion-toolbar color="primary">
+  <ion-buttons start *ngIf="!isSearchbarOpened">
+      <button ion-button icon-only  (click)="profile()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="!isSearchbarOpened">Vinyl DJ</ion-title>
+    <ion-searchbar [(ngModel)]="searchstring" (input)="searchDJ($event)" *ngIf="isSearchbarOpened" palceholder="Search" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    </ion-toolbar>
   </ion-header>
-  <ion-content padding class="background">
+
+  <ion-content padding class="content">
       <div align="center" class="search" *ngIf="isSearchbarOpened;">
-        <div *ngIf="searchstring===''">
-          <p>No search results found</p>
-        </div>
         <ion-list *ngFor="let dj of filteredusers; let i=index">
-            <ion-item (click)="gotoViewDetails(i)">
-              <div *ngIf="searchstring!==''">
-                <ion-row>
-                  <ion-col col-5>
-                    <img class="img" src="{{dj.profile}}"/>
-                    </ion-col>
-                    <ion-col col-6 >
-                      <h2>{{dj.stageName}}</h2>
-                      <p>{{dj.Location}}</p>
-                      <p>{{dj.genre}}</p>
-                    </ion-col>
-                </ion-row>
-              </div>
-            </ion-item>
+          <ion-item (click)="viewDJ(i)">
+            <div *ngIf="searchstring!==''|| searchstring==''">
+            <ion-row>
+              <ion-col col-3s>
+                <img class="img" src="{{dj.profile}}"/>
+                </ion-col>
+                <ion-col>
+                  <h2>{{dj.stageName}}</h2>
+                  <p>{{dj.Location}}</p>
+                  <p>{{dj.genre}}</p>
+                </ion-col>
+            </ion-row>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+      <div *ngIf="!isSearchbarOpened">
+        <ion-list>
+            <ion-card align="center" class="EM" (click)="sortedByGenre(0)">
+              <ion-icon name="musical-note" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header text-wrap>Electronic music</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="House" (click)="sortedByGenre(1)">
+                <ion-icon name="musical-notes" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> House</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="hipop" (click)="sortedByGenre(2)">
+              <ion-icon name="headset" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header text-wrap>Hip Pop</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Gqom" (click)="sortedByGenre(3)">
+              <ion-icon name="microphone" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> Gqom</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Kwaito" (click)="sortedByGenre(4)">
+              <ion-icon name="musical-note" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header> Kwaito</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="RNB" (click)="sortedByGenre(5)">
+              <ion-icon name="musical-notes" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> RnB</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="DH" (click)="sortedByGenre(6)">
+              <ion-icon name="disc" style="zoom:3.0;"></ion-icon>
+              <ion-card-header text-wrap> Deep House</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="CH" (click)="sortedByGenre(7)" text-wrap>
+              <ion-icon name="headset" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header text-wrap>Commercial House</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Jazz" (click)="sortedByGenre(8)">
+                <ion-icon name="musical-notes" style="zoom:3.0;"></ion-icon>
+              <ion-card-header>Jazz</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Soul" (click)="sortedByGenre(9)">
+                <ion-icon name="microphone" style="zoom:3.0;"></ion-icon>
+              <ion-card-header>Soul</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Accapella" (click)="sortedByGenre(10)">
+                <ion-icon name="musical-notes" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> Accapella</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Rock" (click)="sortedByGenre(11)">
+                <ion-icon name="musical-notes" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> Rock</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Disco" (click)="sortedByGenre(12)">
+              <ion-icon name="headset" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header> Disco</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Reggae" (click)="sortedByGenre(13)">
+                <ion-icon name="headset" style="zoom:3.0;" ></ion-icon>
+              <ion-card-header> Reggae</ion-card-header>
+            </ion-card>
+            <ion-card align="center" class="Gospel" (click)="sortedByGenre(14)">
+                <ion-icon name="microphone" style="zoom:3.0;"></ion-icon>
+              <ion-card-header> Gospel</ion-card-header>
+            </ion-card>
           </ion-list>
       </div>   
-      <div *ngIf="!isSearchbarOpened">
-        <ion-row>
-            <ion-col col-6 *ngFor="let dj of filteredusers; let i=index">
-                <ion-card class="card" align="center" (click)="gotoViewDetails(i)">
-                    <img class="imgs" src="{{dj.profile}}" />
-                    <h2 style="color:white;font-family: Arial, sans-serif">{{dj.stageName}}</h2>
-                    <p>{{dj.genre}}</p>
-                    <p class="pnum">{{i+1}}</p>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-      </div>
-      
   </ion-content>

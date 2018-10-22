@@ -6,18 +6,15 @@ import firebase, { User } from 'firebase/app';
 import 'firebase/database';
 /*
   Generated class for the AddDjProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
 export class AddDjProvider {
-
   DjProfile:firebase.database.Reference;
   currentUser:User;
   firedata=firebase.database().ref('/DjProfile');
   constructor() {
-
     firebase.auth().onAuthStateChanged(user=>{
       if(user){
         this.currentUser=user;
@@ -28,9 +25,8 @@ export class AddDjProvider {
   getDjProfile():firebase.database.Reference{
     return this.DjProfile;
   }
-
-  updateNames(email:string,stageName:string,desc:string,contact:string,Location:string,genre:string):Promise<any>{
-     return this.DjProfile.update({email,stageName,desc,contact,Location,genre})
+  updateNames(email:string,stageName:string,desc:string,Location:string,genre:string,PriceHour:number,facebookLink:string):Promise<any>{
+     return this.DjProfile.update({email,stageName,desc,Location,genre,PriceHour,facebookLink})
   }
   getallusers() {
     var promise = new Promise((resolve, reject) => {
@@ -47,7 +43,16 @@ export class AddDjProvider {
     })
     return promise;
    }
-
-  
+   getuserdetails() {
+    var promise = new Promise((resolve, reject) => {
+    this.firedata.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
+      let userdata = snapshot.val();
+      resolve(snapshot.val());
+    }).catch((err) => {
+      reject(err);
+      })
+    })
+    return promise;
+  }
 
 }

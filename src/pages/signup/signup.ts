@@ -53,6 +53,7 @@ export class SignupPage {
             ])],
  
             email:['',Validators.compose([Validators.required,
+              Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
             ])],
 
         
@@ -71,22 +72,27 @@ export class SignupPage {
  
       }
 
-
+  
    signUp(){
      if(!this.userForm.valid){
      console.log(this.userForm.valid);
      }else{
+      let loading = this.loadingCTR.create({
+        content: 'Please wait..'
+      });
+    
+      loading.present();
      this.authPROV.signUp(this.userForm.value.email,this.userForm.value.password)
      .then(authPROV =>{
+      loading.dismiss();
      this.load.dismiss().then(()=>{
-
-
      this.profilePROV.UserDetails(this.userForm.value.firstName, this.userForm.value.lastName) 
      .then(() => {
      this.userForm.reset();
        })
+       
        const alert = this.alertCTR.create({
-        subTitle:"Welcome to the world of DJ's",
+        subTitle:"You are successfully registered",
         buttons: [{
           text:'Ok',
           handler:data=>{
@@ -109,9 +115,11 @@ export class SignupPage {
           alert.present();
         })
       })
-      this.load = this.loadingCTR.create();
-      this.load.present();
     }
+    this.load=this.loadingCTR.create();
+  }
+  gotosignin(){
+    this.navCtrl.push(SigninPage);
   }
 
   equalto(field_name): ValidatorFn {
@@ -124,5 +132,7 @@ export class SignupPage {
             return null;
     };
 }
-
+gotosignup(){
+  this.navCtrl.push(SignupPage);
+}
 }

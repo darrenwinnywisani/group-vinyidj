@@ -34,14 +34,19 @@ export class BookingPage {
   event:string;
   Date:string;
   Time:string;
-  Number:string;
+  Number:number;
   townships:string;
   Booking:firebase.database.Reference;
   currentUser:User;
   message:string;
   sentEmail:any;
+  price:number;
   sname:string;
   details:any;
+  total:number=0;
+  hours:string;
+  priceHour:string;
+
   town=['Alice','Bellville','Benoni','Bethlehem','Bloemfontein','Boksburg','Brakpan' ,'Butterworth','Cape Town',
   'Carletonville','Constantia','Durban','East London','Emalahleni','Empangeni','Germiston','George','Giyani',
   'Graaff-Reinet','Grahamstown','Hopefield','Jagersfontein','Johannesburg','King William’s Town','Kimberley',
@@ -55,13 +60,15 @@ export class BookingPage {
   constructor( private _EMAIL: EmailProvider,public navCtrl: NavController, public navParams: NavParams,
     public alertCTR: AlertController,private FB:FormBuilder, private authPROV: AuthProvider,
      private booking:BookingProvider,private loadingCTR:LoadingController ) {
+    
      this.details=this.navParams.get('data');
      this.sname=this.details[0].stageName;
      this.sentEmail=this.details[0].email;
-     
+     this.price=this.details[0].PriceHour;
+
      console.log('sent', this.details);
      console.log('sent', this.sname);
-     console.log('sent', this.sentEmail);
+     console.log('sent', this.price);
      this.userForm= this.FB.group({
 
         Name:['',Validators.compose([Validators.required,
@@ -83,9 +90,11 @@ export class BookingPage {
          ])],
 
         Number:['',Validators.compose([Validators.required,
-        Validators.minLength(10),
+        Validators.minLength(1),
         Validators.pattern('[0-9]*')
          ])],
+
+        
   })
   
 
@@ -93,6 +102,11 @@ export class BookingPage {
 
   
   submit(){
+
+    this.priceHour=this.price.toString(); 
+    this.total=this.Number*parseInt(this.priceHour);
+    this.Number=this.total;
+
     firebase.auth().onAuthStateChanged(user=>{
       if(user){
       this.currentUser=user;
@@ -101,7 +115,7 @@ export class BookingPage {
         this.userForm.value.event,this.userForm.value.Date,this.userForm.value.Time,this.userForm.value.Number)
         this.message='Hello '+this.Name;
         this.sendMessage();
-        this.navCtrl.setRoot(HomePage)
+        // this.navCtrl.setRoot(HomePage)
       }else{
         const alert = this.alertCTR.create({
           subTitle: 'Please sign in first to make a booking',
@@ -119,9 +133,14 @@ export class BookingPage {
   })
  }
  sendMessage() : void
- {
-     this.message='Hello '+this.sname+' \n'+' '+this.Name+' '+this.Location+''+this.event+' '+this.Date+' '+this.Time;
-     this._EMAIL.sendEmail(this.sentEmail, this.event, this.message);
- }
-
+ {  
+    this.hours=this.Number.toString();
+    this.priceHour=this.price.toString();
+    this.total=parseInt(this.hours)*parseInt(this.priceHour);
+    this.Number=this.total;
+     this.message='Hello '+this.sname+"\n"+" "+"\n"+"You have received a booking invite."+"\n"+" "+"\n"+"Event: "+this.userForm.controls['event'].value+" "+"Location:"+this.userForm.controls['Location'].value+"\n"+" "+"\n Date: "+
+     this.userForm.controls['Date'].value+"\n"+"Time: "+this.userForm.controls['Time'].value;
+         this._EMAIL.sendEmail(this.sentEmail, this.userForm.controls['event'].value, this.message);
+      
+  }
 }

@@ -1,3 +1,52 @@
-page-add-dj {
+.content{
+    // background-image: url("../assets/imgs/back.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color:#EEEEEE;
 
+    .img{
+        width:20%;
+        height:20%;
+        border-radius: 50%;
+    }
+    .container{
+      
+    }
 }
+#myInput {
+    width: calc(100% - 10px);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+
+.items {
+    background-color: transparent;
+    color:#4d606e;
+    .input {
+ 
+        color:#4d606e;
+        //background: rgba(255, 255, 255, 0.3);
+       // border-radius: 10px;
+    }
+    .label{
+        color:#3fbac2;
+    }
+    .icon{
+        color:#488aff;
+        width:10px;
+        height:10px;
+        border-radius: 20%;
+    }
+  }
+  ion-input {
+    ::placeholder{
+        color:rgb(24, 87, 87) !important;
+    }
+#button {
+    color: #3fbac2;
+    color: white;
+    border-radius:50px;
+}
+  }

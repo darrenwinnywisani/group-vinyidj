@@ -3,7 +3,6 @@ import { ViewDetailsPage } from './../pages/view-details/view-details';
 import { ResetpasswordPage } from './../pages/resetpassword/resetpassword';
 import { ProfilePage } from './../pages/profile/profile';
 import { SigninPage } from './../pages/signin/signin';
-import { OnboardingPage } from './../pages/onboarding/onboarding';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -26,6 +25,11 @@ import { ImageProvider } from '../providers/image/image';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import {Camera} from '@ionic-native/camera';
+import { ViewDjPage } from '../pages/view-dj/view-dj';
+import { SplashPage } from '../pages/splash/splash';
+import { UserprofilePage } from '../pages/userprofile/userprofile';
+import { FacebookProvider } from '../providers/facebook/facebook';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const config = {
@@ -44,18 +48,21 @@ firebase.initializeApp(config);
   declarations: [
     MyApp,
     HomePage,
-    OnboardingPage,
     SigninPage,
     SignupPage,
     ProfilePage,
+    ViewDjPage,
+    UserprofilePage,
     ResetpasswordPage,
     AddDjPage,
     ViewDetailsPage,
-    BookingPage
+    BookingPage,
+    SplashPage
  
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     RecaptchaModule
   ],
@@ -63,15 +70,16 @@ firebase.initializeApp(config);
   entryComponents: [
     MyApp,
     HomePage,
-    OnboardingPage,
     SigninPage,
     SignupPage,
+    ViewDjPage,
+    UserprofilePage,
     ProfilePage,
     ResetpasswordPage,
     AddDjPage,
     ViewDetailsPage,
     BookingPage,
-
+    SplashPage
 
      
   ],
@@ -90,7 +98,8 @@ firebase.initializeApp(config);
     ImageProvider,
     Base64,
     Camera,
-    ImagePicker
+    ImagePicker,
+    FacebookProvider
 
   ]
 })

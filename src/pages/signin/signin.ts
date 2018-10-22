@@ -49,36 +49,42 @@ export class SigninPage {
 ionViewDidLoad() {
   console.log('ionViewDidLoad  SiginPage');
 }
-goToSignUp():void {
+gotosignup(){
   this.navCtrl.push(SignupPage);
-} 
+}
 
 signIn(){
   if(!this.userForm.valid){
   console.log(this.userForm.valid)
   }else{
+    let loading = this.loadingCtrl.create({
+      content: 'Logging in...'
+    });
+  
+    loading.present();
     this.authPROV.signIn(this.userForm.value.email,this.userForm.value.password)
     .then(authData=>{
+      loading.dismiss();
       this.load.dismiss().then(()=>{
-    this.navCtrl.setRoot(HomePage);
-    location.reload()
+        this.navCtrl.setRoot(HomePage);
       })
     },error=>{
       this.load.dismiss().then(()=>{
+        loading.dismiss();
         const alert = this.alertCtrl.create({
           subTitle: 'Please check your user details or signup',
           buttons: [{
             text:'Ok',
             handler:data=>{
-                
+             
               }
             }]
         });
         alert.present();
+
       })
     })
     this.load=this.loadingCtrl.create();
-    this.load.present()
     }
   }
  

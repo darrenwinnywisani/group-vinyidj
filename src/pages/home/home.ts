@@ -1,9 +1,12 @@
+import { UserprofilePage } from './../userprofile/userprofile';
+import { ProfilePage } from './../profile/profile';
 import { CatalogProvider } from './../../providers/catalog/catalog';
 import { ViewDetailsPage } from './../view-details/view-details';
 import { AddDjPage } from './../add-dj/add-dj';
 import { AddDjProvider } from './../../providers/add-dj/add-dj';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams, Alert, AlertController } from 'ionic-angular';
+import { ViewDjPage } from '../view-dj/view-dj';
 
 @Component({
   selector: 'page-home',
@@ -19,15 +22,31 @@ export class HomePage {
   filteredusers=[];
   temparr=[];
   viewDetails=[];
-
+  category=[];
+  arrGenre=[];
+  genres:string='';
+  userProfile:any;
+  avatar:string;
+  tempGenre:string='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private DjPROV: AddDjProvider, public alertCtrl: AlertController, private catProv: CatalogProvider) {
+    private DjPROV: AddDjProvider,public zone: NgZone, public alertCtrl: AlertController, private catProv: CatalogProvider) {
       this.DjPROV.getallusers().then((res: any) => {
         this.filteredusers = res;
         this.temparr = res;
-        console.log('response',this.filteredusers)})
+      })
+      this.userProfile=this.DjPROV.getuserdetails();
+      console.log('user',this.userProfile)
   }
-
+  profile(){
+    this.navCtrl.push(UserprofilePage)
+  }
+  viewDJ(i:number){
+    this.viewDetails=[];
+    this.viewDetails.push(this.filteredusers[i]);
+    this.navCtrl.push(ViewDetailsPage,{
+      data:this.viewDetails
+    });
+  }s
   searchDJ(searchbar) {
     this.filteredusers = this.temparr;
     var q = searchbar.target.value;
@@ -42,11 +61,12 @@ export class HomePage {
       return false;
     })
   }
-  gotoViewDetails(i:number){
-    this.viewDetails.push(this.filteredusers[i])
-    this.navCtrl.setRoot(ViewDetailsPage,{
-    data:this.viewDetails
-    });
+
+  sortedByGenre(i:number){
+    this.category=[];
+    this.category = ['Electronic music','House','Hip Pop','Gqom','Kwaito','RnB','Deep House','Commercial House','jazz','Soul','Accapella','Rock','Disco','Reggae','Gospel'];
+    this.genres=this.category[i];
+ 
+    this.navCtrl.push(ViewDjPage,{data:this.genres});
   }
-  
-}
+} 

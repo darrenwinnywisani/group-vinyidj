@@ -24,7 +24,7 @@ export class BookingProvider {
     })
     }
   
-    BookingDetails(Name:string,email:string,Location:string,event:string,Date:string,Time:string,Number:string):any{
+    BookingDetails(Name:string,email:string,Location:string,event:string,Date:string,Time:string,Number:number):any{
       return this.Booking.update({Name,email,Location,event,Date,Time,Number});
    }
   }

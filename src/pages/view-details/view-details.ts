@@ -1,8 +1,10 @@
+import { FacebookProvider } from './../../providers/facebook/facebook';
 import { BookingPage } from './../booking/booking';
 import { HomePage } from './../home/home';
 import { AddDjProvider } from './../../providers/add-dj/add-dj';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewDjPage } from '../view-dj/view-dj';
 
 /**
  * Generated class for the ViewDetailsPage page.
@@ -21,11 +23,13 @@ export class ViewDetailsPage {
 
   temparr=[];
   filteredusers=[];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private DjPROV:AddDjProvider) {
-
+  facebook:string='https://www.facebook.com/';
+  constructor(public navCtrl: NavController, private facebookProv:FacebookProvider,public navParams: NavParams, private DjPROV:AddDjProvider) {
+    
     this.filteredusers=this.navParams.get('data');
+    // this.facebook=this.filteredusers[0].facebookLink;
 
+    console.log('facebook',this.facebook)
     // this.DjPROV.getallusers().then((res: any) => {
     //   this.filteredusers = res;
     //   this.temparr = res;
@@ -33,7 +37,9 @@ export class ViewDetailsPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.filteredusers=[];
+    this.filteredusers=this.navParams.get('data');
     console.log('ionViewDidLoad ViewDetailsPage');
   }
 
@@ -43,7 +49,12 @@ export class ViewDetailsPage {
     })
     console.log('email',this.filteredusers)
   }
-
+  facebooklink(){
+    this.facebookProv.facebookLink(this.facebook).subscribe(results=>{
+      console.log('facebook',results)
+    });
+    
+  }
   goback(){
     this.navCtrl.setRoot(HomePage);
    }
