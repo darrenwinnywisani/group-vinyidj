@@ -25,11 +25,7 @@ export class AddDjProvider {
   getDjProfile():firebase.database.Reference{
     return this.DjProfile;
   }
-<<<<<<< HEAD
   updateNames(email:string,stageName:string,desc:string,Location:string,genre:string,PriceHour:number,facebookLink:string):Promise<any>{
-=======
-  updateNames(email:string,stageName:string,desc:string,Location:string,genre:string,PriceHour:string,facebookLink:string):Promise<any>{
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
      return this.DjProfile.update({email,stageName,desc,Location,genre,PriceHour,facebookLink})
   }
   getallusers() {
@@ -47,7 +43,6 @@ export class AddDjProvider {
     })
     return promise;
    }
-<<<<<<< HEAD
    getuserdetails() {
     var promise = new Promise((resolve, reject) => {
     this.firedata.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
@@ -60,7 +55,4 @@ export class AddDjProvider {
     return promise;
   }
 
-=======
-  
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
 }

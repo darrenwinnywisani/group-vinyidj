@@ -1,11 +1,13 @@
+import { SigninPage } from './../signin/signin';
 import { FacebookProvider } from './../../providers/facebook/facebook';
 import { BookingPage } from './../booking/booking';
 import { HomePage } from './../home/home';
 import { AddDjProvider } from './../../providers/add-dj/add-dj';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Alert, AlertController } from 'ionic-angular';
 import { ViewDjPage } from '../view-dj/view-dj';
-
+import firebase, { User } from 'firebase/app';
+import 'firebase/database';
 /**
  * Generated class for the ViewDetailsPage page.
  *
@@ -23,22 +25,15 @@ export class ViewDetailsPage {
 
   temparr=[];
   filteredusers=[];
-<<<<<<< HEAD
-  facebook:string='https://www.facebook.com/';
-  constructor(public navCtrl: NavController, private facebookProv:FacebookProvider,public navParams: NavParams, private DjPROV:AddDjProvider) {
-=======
+  currentUser:User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private DjPROV:AddDjProvider) {
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
+  facebook:string='https://www.facebook.com/';
+  constructor(public navCtrl: NavController,public alertCTR: AlertController, private facebookProv:FacebookProvider,public navParams: NavParams, private DjPROV:AddDjProvider) {
     
     this.filteredusers=this.navParams.get('data');
-    // this.facebook=this.filteredusers[0].facebookLink;
+    this.facebook=this.filteredusers[0].facebookLink;
 
     console.log('facebook',this.facebook)
-    // this.DjPROV.getallusers().then((res: any) => {
-    //   this.filteredusers = res;
-    //   this.temparr = res;
-    //   console.log('response',this.filteredusers)})
 
   }
 
@@ -49,19 +44,36 @@ export class ViewDetailsPage {
   }
 
   book(){
-    this.navCtrl.push(BookingPage,{
-      data:this.filteredusers
-    })
-    console.log('email',this.filteredusers)
+    
+    firebase.auth().onAuthStateChanged(user=>{
+      if(user){
+      this.currentUser=user;
+      this.navCtrl.push(BookingPage,{
+        data:this.filteredusers
+      })
+      console.log('email',this.filteredusers)
+      }else{
+        const alert = this.alertCTR.create({
+          subTitle: 'Please sign in first to make a booking',
+          buttons: [{
+            text:'Cancel',
+            role:'cancel'},{
+            text:'Ok',
+            handler:data=>{
+                 this.navCtrl.push(SigninPage);
+              }
+            }]
+        });
+        alert.present();
+      }
+  })
+   
   }
   facebooklink(){
-    this.facebookProv.facebookLink(this.facebook).subscribe(results=>{
-      console.log('facebook',results)
-    });
-    
-  }
-  goback(){
-    this.navCtrl.setRoot(HomePage);
-   }
-
+      window.open(this.facebook,"_system","location=yes");
+      this.facebookProv.facebookLink(this.facebook).subscribe(results=>{
+        console.log('facebook',results)
+      });
+      
+    }
 }

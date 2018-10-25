@@ -24,7 +24,7 @@ export class SigninPage {
 
   email:string;
   password:string;
-  
+  checkUser:boolean;
   userForm:FormGroup;
 
     constructor(public navCtrl: NavController,
@@ -58,11 +58,7 @@ signIn(){
   console.log(this.userForm.valid)
   }else{
     let loading = this.loadingCtrl.create({
-<<<<<<< HEAD
       content: 'Logging in...'
-=======
-      content: 'Logging...'
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     });
   
     loading.present();
@@ -91,8 +87,12 @@ signIn(){
     this.load=this.loadingCtrl.create();
     }
   }
- 
-
+  guestLogin(){
+    this.checkUser=true;
+    this.navCtrl.setRoot(HomePage,{
+      data:this.checkUser
+    })
+  }
   forgotPassword(){
       this.navCtrl.push(ResetpasswordPage);
     

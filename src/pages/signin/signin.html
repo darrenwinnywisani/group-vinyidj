@@ -1,5 +1,4 @@
 <ion-content no-padding class="content">
-<<<<<<< HEAD
   <div class="container">
     <div class="name-holder">
       <div class="logo">
@@ -31,78 +30,17 @@
             <ion-input class="input" type="password" formControlName="password">
             </ion-input>
         </ion-item>
-<!--   
-        <div padding *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched" class="invalid">
-            <p ion-text color="danger">Password is required!</p>
-        </div>
-  
-        <div padding *ngIf="userForm.get('password').hasError('minlength') && userForm.get('password').touched" class="invalid">
-            <p ion-text color="danger">Password should be at least 6 charectors</p>
-        </div>
-   -->
         <div padding>
             <button ion-button block full id="button" class="primary-button" color="primary">Login</button>
         </div>
-  
         <div  style="text-align:center" padding>
           <p style="color:#4d606e">Forgot Password?<a style="color:#3fbac2" (click)="forgotPassword()">Reset</a></p>
-          <p style="color:#4d606e" class="p">Already have an account?<a style="color:#3fbac2"(click)="gotosignup()">Register</a></p>
-      </div>
+          <p style="color:#4d606e" class="p">have an account?<a style="color:#3fbac2"(click)="gotosignup()">Register</a></p>
+          <br>
+        <button ion-button clear id="button" class="primary-button" style="color:#3fbac2" (click)="guestLogin()">Explore as guest</button>
+    </div>
+      
     </form>
   </div>
-  
+
   </ion-content>
-=======
-<div class="container">
-  <div class="name-holder">
-    <div class="logo">
-      
-    </div>
-    <div class="app-name">
-        <h2>Vinyl DJ</h2>
-    </div>
-  </div>
-
-  <form [formGroup]="userForm" class="form-holder" (ngSubmit)="signIn()" novalidate>
-
-      <ion-item class="items" [ngClass]="{'error-border':!userForm.get('email').valid && userForm.get('email').touched}">
-          
-          <ion-label floating> Email</ion-label>
-          <ion-input class="input" type="email" formControlName="email">
-          </ion-input>
-      </ion-item>
-      <div padding *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched" class="invalid">
-          <p ion-text color="danger">Email field is required!</p>
-      </div>
-      <div padding *ngIf="userForm.get('email').hasError('minlength') && userForm.get('email').touched" class="invalid">
-          <p ion-text color="danger">Enter valid email!</p>
-      </div>
-
-      <br/>
-      <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('password').valid && userForm.get('password').touched}">
-          <ion-label floating> Password</ion-label>
-          <ion-input class="input" type="password" formControlName="password">
-          </ion-input>
-      </ion-item>
-
-      <div padding *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched" class="invalid">
-          <p ion-text color="danger">Password is required!</p>
-      </div>
-
-      <div padding *ngIf="userForm.get('password').hasError('minlength') && userForm.get('password').touched" class="invalid">
-          <p ion-text color="danger">Password minimum length is 6!</p>
-      </div>
-
-      <div padding>
-          <button ion-button block full id="button" class="primary-button" color="primary" [disabled]="!userForm.valid">Login</button>
-      </div>
-
-      <div  style="text-align:center" padding>
-        <p style="color:#4d606e">Forgot Password?<a style="color:#3fbac2" (click)="forgotPassword()">Reset</a></p>
-        <p style="color:#4d606e" class="p">Already have an account?<a style="color:#3fbac2"(click)="gotosignup()">Register</a></p>
-    </div>
-  </form>
-</div>
-
-</ion-content>
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4

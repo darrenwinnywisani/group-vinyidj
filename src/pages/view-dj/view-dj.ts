@@ -11,16 +11,15 @@ import { ViewDetailsPage } from '../view-details/view-details';
   templateUrl: 'view-dj.html',
 })
 export class ViewDjPage {
+  checkUser:boolean;
   categoty:string='';
   DJGenre=[];
   filteredusers=[];
   dj=[];
-<<<<<<< HEAD
   constructor(public navCtrl: NavController, private DjPROV: AddDjProvider,public navParams: NavParams) {
-=======
-  constructor(public navCtrl: NavController,  private DjPROV: AddDjProvider,public navParams: NavParams) {
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     this.categoty=this.navParams.get('data');
+    this.checkUser=this.navParams.get('tool');
+    console.log('tool',this.checkUser)
     this.DjPROV.getallusers().then((res: any) => {
       this.filteredusers = res;
       for(let key = 0;key < this.filteredusers.length;key++){
@@ -32,14 +31,15 @@ export class ViewDjPage {
     })
   }
   addDJ(){
-    this.navCtrl.push(AddDjPage);
+    this.navCtrl.push(AddDjPage,{
+      data:this.checkUser
+    });
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewDjPage');
   }
   gotoDetails(i:number){
     this.dj.push(this.DJGenre[i]);
-<<<<<<< HEAD
     this.navCtrl.push(ViewDetailsPage,{data:this.dj});
     this.dj=[];
   }
@@ -49,9 +49,3 @@ export class ViewDjPage {
   }
 
 }
-=======
-    this.navCtrl.push(ViewDetailsPage,{data:this.dj})
-  }
-
-}
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4

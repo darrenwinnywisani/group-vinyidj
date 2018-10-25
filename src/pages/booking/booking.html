@@ -1,12 +1,10 @@
 <ion-header>
-<<<<<<< HEAD
   <ion-navbar color="primary">
     <ion-title>Booking {{sname}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding class="content">
-  <p>{{total}}<p>
  <div class="container"> 
   <form  [formGroup]="userForm"  class="form-holder" (ngSubmit)="submit()" novalidate>
      <ion-item class="items" [ngClass]="{'error-border':!userForm.get('Name').valid && userForm.get('Name').touched}">
@@ -28,7 +26,7 @@
 
 
       <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('Number').valid && userForm.get('Number').touched}">
-      <ion-label  floating >Booing Hours</ion-label>
+      <ion-label  floating >Booking Hours</ion-label>
       <ion-input type="number" formControlName="Number"></ion-input>
       </ion-item>
         
@@ -100,112 +98,3 @@
     
   </div>
 </ion-content>
-=======
-    <ion-navbar color="primary">
-      <ion-title>Booking {{sname}}</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content paddingclass="content">
-  
-   <div class="container"> 
-  
-    <form  [formGroup]="userForm"  class="form-holder" (ngSubmit)="submit()" novalidate>
-    <h2 text-center>Client Info</h2>
-      <!-- <p text-center >To: {{sentEmail}}</p> -->
-  
-      
-       <ion-item class="items" [ngClass]="{'error-border':!userForm.get('Name').valid && userForm.get('Name').touched}">
-        <ion-label  floating >Name</ion-label>
-        <ion-input formControlName="Name" type="text">
-        </ion-input>
-        </ion-item>
-    
-        <ion-item *ngIf="userForm.get('Name').hasError('required') && userForm.get('Name').touched" class="invalid">
-        <p ion-text color="danger">* Name field is required!</p>
-        </ion-item>
-        <ion-item *ngIf="userForm.get('Name').hasError('minlength') && userForm.get('Name').touched" class="invalid">
-        <p ion-text color="danger">* Enter a valid Name with 3 or more characters!</p>
-        </ion-item>
-        <ion-item *ngIf="userForm.get('Name').hasError('pattern') && userForm.get('Name').touched" class="invalid">
-        <p ion-text color="danger">* Name can only take letters!</p>
-        </ion-item>
-  
-  
-  
-        <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('Number').valid && userForm.get('Number').touched}">
-        <ion-label  floating >Contact Number</ion-label>
-        <ion-input type="tel" maxlength="10" formControlName="Number"></ion-input>
-        </ion-item>
-          
-        <ion-item *ngIf="userForm.get('Number').hasError('required') && userForm.get('Number').touched" class="invalid">
-        <p ion-text color="danger">* Contact Number field is required!</p>
-        </ion-item>
-          
-        <ion-item  *ngIf="userForm.get('Number').hasError('minlength') && userForm.get('Number').touched" class="invalid">
-        <p ion-text color="danger">* Phone number must be 10 digits</p>
-        </ion-item>
-      
-        <ion-item  *ngIf="userForm.get('Number').hasError('pattern') && userForm.get('Number').touched" class="invalid">
-        <p ion-text color="danger">*Contact Number can only take Numbers!</p>
-        </ion-item>
-  
-      
-      <ion-item class="items" [ngClass]="{'error-border':!userForm.get('Date').valid && userForm.get('Date').touched}">
-      <ion-label  floating >Date</ion-label>
-       <ion-datetime displayformat="DD/MM/YYYY" pickerformat="DD/MM/YYYY" min="2017-12-31" max="2020"  formControlName="Date"></ion-datetime>
-      </ion-item>
-      
-      <ion-item *ngIf="userForm.get('Date').hasError('required') && userForm.get('Date').touched" class="invalid">
-        <p ion-text color="danger">* Date field is required!</p>
-        </ion-item>
-      
-      <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('Time').valid && userForm.get('Time').touched}">
-      <ion-label floating >Time</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="Time"></ion-datetime>
-      </ion-item>
-      
-      <ion-item *ngIf="userForm.get('Time').hasError('required') && userForm.get('Time').touched" class="invalid">
-      <p ion-text color="danger">* Time field is required!</p>
-      </ion-item>
-  
-  
-  <br>
-  <ion-item class="items" [ngClass]="{'error-border':!userForm.get('Location').valid && userForm.get('Location').touched}">
-    <ion-label>Location</ion-label>
-    <ion-select formControlName="Location" >
-    <ion-option *ngFor ="let townships of town; let i=index ">{{town[i]}}</ion-option>
-    </ion-select>
-  </ion-item>
-  
-   <ion-item  *ngIf="userForm.get('Location').hasError('required') && userForm.get('Location').touched" class="invalid">
-   <p ion-text  color="danger">* Location is required!</p>
-   </ion-item>
-  
-  <br>
-        
-    <ion-item class="items" [ngClass]="{'error-border':!userForm.get('event').valid && userForm.get('event').touched}">
-    <ion-label >Type Of Event</ion-label>
-    <ion-select formControlName="event"   >
-    <ion-option value="wedding">Wedding</ion-option>
-    <ion-option value="party">Party</ion-option>
-    <ion-option value="concert">Concert</ion-option>
-    <ion-option value="conference">Conference</ion-option>
-    </ion-select>
-    </ion-item>
-    
-  
-    <ion-item *ngIf="userForm.get('event').hasError('required') && userForm.get('event').touched" class="invalid">
-    <p ion-text color="danger">* Type Of Event field is required!</p>
-    </ion-item>
-  
-    <div padding >
-    <button ion-button block round  id="button" color="primary" (click)="submit()">SUBMIT</button>     
-    </div>
-    </form>
-      
-    </div>
-  </ion-content>
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4

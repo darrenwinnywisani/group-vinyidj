@@ -27,12 +27,9 @@ import { Base64 } from '@ionic-native/base64';
 import {Camera} from '@ionic-native/camera';
 import { ViewDjPage } from '../pages/view-dj/view-dj';
 import { SplashPage } from '../pages/splash/splash';
-<<<<<<< HEAD
 import { UserprofilePage } from '../pages/userprofile/userprofile';
 import { FacebookProvider } from '../providers/facebook/facebook';
 import { HttpClientModule } from '@angular/common/http';
-=======
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
 
 
 const config = {
@@ -55,10 +52,7 @@ firebase.initializeApp(config);
     SignupPage,
     ProfilePage,
     ViewDjPage,
-<<<<<<< HEAD
     UserprofilePage,
-=======
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     ResetpasswordPage,
     AddDjPage,
     ViewDetailsPage,
@@ -79,10 +73,7 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ViewDjPage,
-<<<<<<< HEAD
     UserprofilePage,
-=======
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
     ProfilePage,
     ResetpasswordPage,
     AddDjPage,

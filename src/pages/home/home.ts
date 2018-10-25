@@ -1,3 +1,4 @@
+import { SigninPage } from './../signin/signin';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
 import { CatalogProvider } from './../../providers/catalog/catalog';
@@ -13,8 +14,8 @@ import { ViewDjPage } from '../view-dj/view-dj';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-
+  guestAuth:boolean;
+  checkUser:boolean;
   Name: string;
   DjProfile: any;
   stageNameList: Array<any>;
@@ -25,25 +26,17 @@ export class HomePage {
   category=[];
   arrGenre=[];
   genres:string='';
-<<<<<<< HEAD
   userProfile:any;
   avatar:string;
-=======
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   tempGenre:string='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private DjPROV: AddDjProvider,public zone: NgZone, public alertCtrl: AlertController, private catProv: CatalogProvider) {
+      this.checkUser=this.navParams.get('data');
+      console.log('wow',this.checkUser)
       this.DjPROV.getallusers().then((res: any) => {
         this.filteredusers = res;
-<<<<<<< HEAD
         this.temparr = res;
       })
-      this.userProfile=this.DjPROV.getuserdetails();
-      console.log('user',this.userProfile)
-=======
-      })
-
->>>>>>> 61b2898104177cb6d1f6fbb51c3da7b3483e42f4
   }
   profile(){
     this.navCtrl.push(UserprofilePage)
@@ -69,12 +62,14 @@ export class HomePage {
       return false;
     })
   }
-
+  logout(){
+    this.navCtrl.setRoot(SigninPage);
+  }
   sortedByGenre(i:number){
     this.category=[];
     this.category = ['Electronic music','House','Hip Pop','Gqom','Kwaito','RnB','Deep House','Commercial House','jazz','Soul','Accapella','Rock','Disco','Reggae','Gospel'];
     this.genres=this.category[i];
  
-    this.navCtrl.push(ViewDjPage,{data:this.genres});
+    this.navCtrl.push(ViewDjPage,{data:this.genres, tool:this.checkUser});
   }
 } 
